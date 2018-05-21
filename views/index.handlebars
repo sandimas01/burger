@@ -1,15 +1,29 @@
 <h1>burger Saver</h1>
 
 <h3>Save burgers</h3>
+<div>
+        <ul>
+          {{#each burgers}}
+              {{#unless this.devoured}}
+                  {{this.burger_name}}
+                      <span>
+                        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+                          <input type="hidden" name="devoured" value="true">
+                          <button type="submit"> EAT IT! </button>
+                        </form>
+                      </span>
+                {{/unless}}
+          {{/each}}
+        </ul>
 
-<ul>
-  {{#each burgers}}
-  	<li>
-       <p>Burger: {{this.burger_name}}</p>
-  	   <p>devoured: {{this.devoured}}</p>
-  	</li>
-  {{/each}}
-</ul>
+				<ul>
+				{{#each burgers}}
+					{{#if this.devoured}}
+              {{this.burger_name}}
+					{{/if}}
+				{{/each}}
+				</ul>
+</div>
 
 <div>
   <form class="create-update-form" action="/burgers/create" method="POST">
