@@ -36,6 +36,7 @@ function objToSql(ob) {
   }
 
   // translate array of strings to a single comma-separated string
+  console.log('objToSql', arr.toString() );
   return arr.toString();
 }
 
@@ -79,7 +80,7 @@ var orm = {
 		queryString = queryString + ' WHERE ';
 		queryString = queryString + condition;
 
-		console.log(queryString);
+		console.log('queryString',queryString);
 
 		connection.query(queryString, function(err, result){
 			if(err) throw err;

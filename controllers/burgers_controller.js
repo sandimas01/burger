@@ -33,9 +33,9 @@ router.put('/burgers/update/:id', function(req, res){
 
 	console.log('condition ', condition);
 
-	// burgers.update({'devoured': req.body.devoured}, condition, function(data){
-	// 	res.redirect('/burgers');
-	// });
+	burgers.update({'devoured': true}, condition, function(data){
+		res.redirect('/burgers');
+	});
 });
 
 // Export routes for server.js to use.
