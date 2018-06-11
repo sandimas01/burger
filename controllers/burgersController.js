@@ -6,7 +6,19 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function(req, res) {
+
+  // If no matching route is found default to home
+  router.get("*", function(req, res) {
+    burger.all(function(data) {
+      var hbsObject = {
+        burgers: data
+      };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
+    });
+  });
+
+router.get("/burgers", function(req, res) {
   burger.all(function(data) {
     var hbsObject = {
       burgers: data
